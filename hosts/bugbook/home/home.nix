@@ -11,6 +11,11 @@
   home-manager.extraSpecialArgs = { inherit inputs; };
 
   home-manager.users.bug = {
+
+    imports = [
+      ./apps/fish.nix
+    ];
+
     home.username = "bug";
     home.homeDirectory = "/home/bug";
     home.stateVersion = "24.11";
