@@ -8,6 +8,6 @@
   };
 
   home-manager.users.bug.home.packages = with pkgs; [
-        rivercarro
+        wideriver
       ];
 }
