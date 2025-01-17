@@ -14,6 +14,7 @@
 riverctl input pointer-2-7-SynPS/2_Synaptics_TouchPad tap enabled
 riverctl input pointer-2-7-SynPS/2_Synaptics_TouchPad natural-scroll enabled
 
+riverctl focus-follows-cursor normal
 
 # Mod4+Shift+Return to start an instance of foot (https://codeberg.org/dnkl/foot)
 riverctl map normal Mod4+Shift Return spawn foot
