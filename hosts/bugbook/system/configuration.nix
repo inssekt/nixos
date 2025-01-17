@@ -83,7 +83,6 @@
 	wayland
 	xwayland
 	foot
-	git
 	tofi
 	vscodium
 	dolphin
