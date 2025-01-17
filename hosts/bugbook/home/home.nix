@@ -25,11 +25,7 @@
       ];
 
     home.file = {
-    ".config/yambar/" = { source = ../dots/yambar; target = ".config/yambar/"; };
-    };
-
-    programs.bash.shellAliases = {
-      nixrb = "sudo nixos-rebuild switch --flake /home/bug/nixos#bugbook";
+    ".config/yambar/" = { source = ./dots/yambar; target = ".config/yambar/"; };
     };
 
     programs.git = {

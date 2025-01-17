@@ -83,11 +83,24 @@
 	xwayland
   yambar
 	foot
-	tofi
+	fuzzel
 	vscodium
 	dolphin
   libinput
+  hyprpicker
+  slurp
+  grim
+  wl-clipboard
+  nerdfetch
   ];
+
+  fonts.packages = with pkgs; [
+    font-awesome
+    powerline-fonts
+    powerline-symbols
+  ];
+
+
   system.stateVersion = "24.11"; # Did you read the comment?
 
 }
