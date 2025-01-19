@@ -4,6 +4,7 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    apple-fonts.url = "github:Lyndeno/apple-fonts.nix/master";
 
     home-manager = {
       url = "github:nix-community/home-manager";

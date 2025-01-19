@@ -1,17 +1,50 @@
+love: &love b4637aff
+rose: &rose d7827eff
+gold: &gold ea9d34ff
+muted: &muted 9893a5ff
+monofur: &monofur monofur for Powerline:pixelsize=20
 bg_default: &bg_default {stack: [{background: {color: 81A1C1ff}}, {underline: {size: 4, color: D8DEE9ff}}]}
+
 bar:
   height: 32
   location: top
-  background: 000000ff
-  font: NotoSans:pixelsize=16
+  font: *monofur
+  layer: top
+  foreground: 575279ff
+  background: f2e9e1ff
 
   right:
+    - battery:
+        name: BAT0
+        content:
+          - string: {text: , font: "Font Awesome 6 Free:style=solid:size=12"}
+          - string: {text: "{capacity}% "}
+    - cpu:
+        content:
+          map:
+            conditions:
+              id < 0:
+                - string: {text: , font: "Font Awesome 6 Free:style=solid:size=12"}
+                - string: {text: "{cpu}% "}
+    - mem:
+        content:
+          - string: {text: , font: "Font Awesome 6 Free:style=solid:size=12"}
+          - string: {text: "{percent_used}% "}
+    - pulse:
+        content:
+          map:
+            margin: 18
+            default: {empty: {}}
+            conditions:
+              sink_online: 
+              - string: {text: , font: "Font Awesome 6 Free:style=solid:size=12"}
+              - string: {text: "{sink_percent}%  "}
     - clock:
         content:
           - string: {text: , font: "Font Awesome 6 Free:style=solid:size=12"}
           - string: {text: "{date}", right-margin: 5}
           - string: {text: , font: "Font Awesome 6 Free:style=solid:size=12"}
-          - string: {text: "{time}   "}
+          - string: {text: "{time}  "}
   left:
     - river:
         anchors:

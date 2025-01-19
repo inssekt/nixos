@@ -13,14 +13,17 @@
 #Setup Touchpad
 riverctl input pointer-2-7-SynPS/2_Synaptics_TouchPad tap enabled
 riverctl input pointer-2-7-SynPS/2_Synaptics_TouchPad natural-scroll enabled
+riverctl input pointer-2-7-SynPS/2_Synaptics_TouchPad disable-while-typing disabled
 
 riverctl focus-follows-cursor normal
+
+riverctl keyboard-layout gb
 
 riverctl map normal Mod4 O spawn 'hyprpicker --autocopy'
 riverctl map normal None Print spawn 'grim -g "$(slurp -d)" - | wl-copy'
 
 # Mod4+Shift+Return to start an instance of foot (https://codeberg.org/dnkl/foot)
-riverctl map normal Mod4+Shift Return spawn foot
+riverctl map normal Mod4+Shift Return spawn kitty
 
 # Mod4+Q to close the focused view
 riverctl map normal Mod4 Q close
@@ -29,6 +32,7 @@ riverctl map normal Mod4 Q close
 riverctl map normal Mod4+Shift E exit
 
 riverctl map normal Mod4 R spawn fuzzel
+riverctl map normal Mod4 E spawn thunar
 
 # Mod4+J and Mod4+K to focus the next/previous view in the layout stack
 riverctl map normal Mod4 J focus-view next

@@ -1,29 +1,35 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-
 { config, pkgs, inputs, ... }:
 
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [
       ./hardware-configuration.nix
 
   ];
+
+  
+
+  # Audio
+  security.rtkit.enable = true;
+  services.pipewire = {
+    enable = true; # if not already enabled
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+    # If you want to use JACK applications, uncomment this
+    #jack.enable = true;
+  };
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "nixos"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
+  networking.hostName = "bugbook";
 
   # Enable networking
   networking.networkmanager.enable = true;
+
+  #Desktop Environment
   services.displayManager.sddm.enable = true;
   services.displayManager.sddm.wayland.enable = true;
   programs.river.enable = true;
@@ -82,22 +88,46 @@
 	wayland
 	xwayland
   yambar
-	foot
+	kitty
 	fuzzel
 	vscodium
-	dolphin
   libinput
   hyprpicker
   slurp
   grim
   wl-clipboard
   nerdfetch
+  brightnessctl
+  prismlauncher
+  steam
+  lutris
+  qbittorrent
+  wine
+  winetricks
+  unrar
+  ark
+  unzip
+  swww
+  gtk3
+  gtk4
+  themechanger
+  pamixer
+
+  ayu-theme-gtk
+
   ];
+
+  programs.thunar.enable = true;
+  services.tumbler.enable = true;
+  services.gvfs.enable = true;
+
+  environment.variables.QT_QPA_PLATFORMTHEME = "qt5ct";
 
   fonts.packages = with pkgs; [
     font-awesome
     powerline-fonts
     powerline-symbols
+    inputs.apple-fonts.packages.${pkgs.system}.sf-pro-nerd
   ];
 
 

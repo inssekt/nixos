@@ -5,15 +5,19 @@
   imports = [
     inputs.home-manager.nixosModules.home-manager
 
+    ./apps/fish.nix
     ./apps/river.nix
   ];
 
+  
+
   home-manager.extraSpecialArgs = { inherit inputs; };
 
-  home-manager.users.bug = {
+  home-manager.backupFileExtension = "bak";
+
+  home-manager.users.bug = { config, pkgs, ...}: {
 
     imports = [
-      ./apps/fish.nix
     ];
 
     home.username = "bug";
@@ -24,8 +28,26 @@
         firefox
       ];
 
-    home.file = {
-    ".config/yambar/" = { source = ./dots/yambar; target = ".config/yambar/"; };
+    home.file.".config/river".source = config.lib.file.mkOutOfStoreSymlink "/home/bug/nixos/hosts/bugbook/home/dots/river";
+    home.file.".config/yambar".source = config.lib.file.mkOutOfStoreSymlink "/home/bug/nixos/hosts/bugbook/home/dots/yambar";
+    home.file.".config/kitty".source = config.lib.file.mkOutOfStoreSymlink "/home/bug/nixos/hosts/bugbook/home/dots/kitty";
+
+
+    xdg = {
+      enable = true;
+    };
+
+    gtk = {
+        enable = true;
+        iconTheme = {
+          name = "Vimix";
+          package = pkgs.vimix-icon-theme;
+      };
+      theme = {
+        name = "Ayu";
+        package = pkgs.ayu-theme-gtk;
+      };
+
     };
 
     programs.git = {
